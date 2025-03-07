@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 Марта, мама!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            scroll-snap-type: x mandatory;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .page {
+            flex: 0 0 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            scroll-snap-align: start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .page h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #ff6f61;
+        }
+        .page p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #ddd;
+        }
+        .page img {
+            width: 150px;
+            margin: 20px 0;
+        }
+        .page .heart {
+            font-size: 4em;
+            color: #ff6f61;
+            animation: beat 1.5s infinite;
+        }
+        .nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 111, 97, 0.8);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .nav-button.prev {
+            left: 10px;
+        }
+        .nav-button.next {
+            right: 10px;
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Первая страница -->
+        <div class="page">
+            <h1>С 8 Марта, мама!</h1>
+            <p>Ты — самая добрая и заботливая мама на свете. 🌸</p>
+            <img src="/image/image.jpeg" alt="Букет цветов">
+            <div class="heart">❤️</div>
+        </div>
+
+        <!-- Вторая страница -->
+        <div class="page">
+            <h1>Спасибо тебе!</h1>
+            <p>За твою любовь, поддержку и вдохновение. 💖</p>
+            <img src="/image/image.jpeg" alt="Букет цветов">
+            <div class="heart">❤️</div>
+        </div>
+
+        <!-- Третья страница -->
+        <div class="page">
+            <h1>Будь счастлива!</h1>
+            <p>Пусть каждый твой день будет наполнен радостью и теплом. 🌟</p>
+            <img src="/image/image.jpeg" alt="Букет цветов">
+            <div class="heart">❤️</div>
+        </div>
+    </div>
+
+    <!-- Кнопки навигации -->
+    <button class="nav-button prev" onclick="prevPage()">←</button>
+    <button class="nav-button next" onclick="nextPage()">→</button>
+
+    <!-- Локальная музыка -->
+    <audio autoplay loop>
+        <source src="music/lofi.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <!-- Скрипт для переключения слайдов -->
+    <script>
+        const container = document.querySelector(".container");
+        let currentPage = 0;
+
+        function nextPage() {
+            if (currentPage < 2) {
+                currentPage++;
+                container.scrollTo({
+                    left: currentPage * window.innerWidth,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                container.scrollTo({
+                    left: currentPage * window.innerWidth,
+                    behavior: "smooth"
+                });
+            }
+        }
+    </script>
+</body>
+</html>
